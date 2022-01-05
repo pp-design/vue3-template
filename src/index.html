@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Copyright" content="Tencent">
+  <meta name="Description" content="" />
+  <meta name="Keywords" content="" />
+  <title>Router</title>
+  <!-- 站点外进入站内路由页,并非真正的index -->
+  <script>
+    /**
+     * 自动跳转
+     * 功能:
+     *    1、自动跳转到本页面地址参数对应的page页面下
+     *    2、跳转地址会保留除page以外的其他参数
+     *    3、跳转地址会自动增加ts毫秒时间戳，刷新html文件缓存
+     * 
+     * 示例：
+     *    this ：https://ppdesign.qq.com/?page=index&tab=news
+     *    to   ：https://ppdesign.qq.com/page/index/?ts=1626092323776&tab=news
+     * 
+     * 注意：
+     *    1、不能带上index.html;
+     *    2、仅限外部跳转进入本站点时使用，内部站点跳转使用内跳方法
+     *    3、未填写page参数，自动进入page/index/
+     */
+    (function () {
+      /** 返回链接上的参数 */
+      function getUrlAllParams(url) {
+        var res = {};
+        var urlData = url.split('?')[1];
+        if (!urlData) return res;
+        var params = urlData.split('&');
+        params.forEach(item => {
+          var key = item.split('=')[0];
+          var value = item.split('=')[1];
+          value = value;
+          if (value === 'undefined' || value === 'null') {
+            value = null;
+          }
+          res[key] = value;
+        });
+        return res;
+      };
+
+      var currHref = window.location.href.replace(/%/g, '%25');
+      var url = decodeURI(currHref);
+      //链接参数
+      var urlParams = getUrlAllParams(url);
+      //页面目录
+      var pageName = urlParams.page || 'index';
+
+      //跳转地址
+      var goUrl = 'https://' + location.host + location.pathname + 'pages/' + pageName + '/?ts=' + Date.now();
+      //重新拼接链接参数
+      for (var key in urlParams) {
+        if (key === 'page' || key === 'ts') continue;
+        goUrl += '&' + key + '=' + urlParams[key];
+      };
+      window.location.href = goUrl;
+    })();
+  </script>
+</head>
+
+<body>
+</body>
+<script type="module" src="/src/main.ts"></script>
+
+</html>

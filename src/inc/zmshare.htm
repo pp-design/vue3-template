@@ -1,0 +1,100 @@
+<div class="g-gozm" style="display: none;">
+  <img class="icon" src="//game.gtimg.cn/images/lol/act/a20200224tft/zm-logo.png" alt="掌上英雄联盟">
+  <div class="name">
+    <p class="p1">掌上英雄联盟</p>
+    <p class="p2">《金铲铲之战》战绩查询阵容推荐</p>
+  </div>
+  <a class="btn" id="know">下载</a>
+</div>
+<style>
+  body.onshare {
+    box-sizing: border-box;
+    padding-bottom: 198px;
+  }
+  .g-gozm {
+    width: 1125px;
+    height: 198px;
+    background-color: #F0F3F7;
+    overflow: hidden;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    z-index: 19;
+    display: flex;
+    align-items: center;
+  }
+  .g-gozm>.icon {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin-left: 36px;
+  }
+  .g-gozm>.name {
+    width: 700px;
+    overflow: hidden;
+    margin-left: 36px;
+  }
+  .g-gozm .p1 {
+    font-size: 54px;
+    color: #384649;
+    -webkit-text-stroke: 1px rgba(28, 28, 28, .35);
+  }
+  .g-gozm .p2 {
+    font-size: 36px;
+    color: #586e73;
+    margin-top: 26px;
+  }
+  .g-gozm>.btn {
+    display: block;
+    width: 168px;
+    height: 84px;
+    background-color: #b59b72;
+    border-radius: 9px;
+    font-size: 36px;
+    color: rgba(255, 255, 255, 0.80);
+    text-align: center;
+    line-height: 84px;
+    text-decoration: none;
+  }
+  .dialog-gozm {
+    width: 720px;
+    height: auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+  }
+  .dialog-gozm>p {
+    width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-size: 42px;
+    color: #1C1C1C;
+    text-align: center;
+    padding: 100px 0;
+  }
+  .dialog-gozm .bottom {
+    width: 100%;
+    height: 144px;
+    overflow: hidden;
+    border-top: 3px solid #E6E6E6;
+  }
+  .dialog-gozm .bottom>a {
+    width: 50%;
+    float: left;
+    font-size: 42px;
+    color: #A0ACB5;
+    line-height: 144px;
+    text-decoration: none;
+    text-align: center;
+  }
+  .dialog-gozm .bottom>.a1 {
+    color: #1C1C1C;
+    box-sizing: border-box;
+    border-left: 2px solid #E6E6E6;
+  }
+</style>
+<script>
+  window.goDownloadZM = ()=>{
+    document.querySelector(".g-gozm #know").dispatchEvent(new MouseEvent('click'));
+  };
+</script>

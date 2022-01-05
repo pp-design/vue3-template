@@ -1,0 +1,122 @@
+<div class="page-file-loading">
+  <style>
+    body{
+      margin: 0;
+    }
+    .g-app{
+      min-height: 300px;
+    }
+    .page-load-tip {
+      width: 1125px;
+      height: 100%;
+      min-height: 1600px;
+      position: absolute;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+    }
+    .page-load-tip>.icon {
+      width: 160px;
+      height: 160px;
+      position: relative;
+      margin: 400px auto 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      animation: loading-anim 1.5s infinite linear;
+    }
+    @keyframes loading-anim {
+      0% {
+        transform: rotateZ(0);
+      }
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+    .page-load-tip .top, .page-load-tip .bottom {
+      width: 100%;
+      height: 50%;
+      position: relative;
+    }
+    .page-load-tip .top {
+      background-image: linear-gradient(to left, #a4b0b9, #c8cfd6 75%);
+    }
+    .page-load-tip .bottom {
+      background-image: linear-gradient(to right, #c8cfd6 25%, #f0f3f7);
+    }
+    .page-load-tip .mask {
+      position: absolute;
+      left: 24px;
+      top: 24px;
+      width: 112px;
+      height: 112px;
+      background-color: #f0f3f7;
+      border-radius: 50%;
+    }
+    .page-load-tip .btn-flash {
+      display: block;
+      margin: 90px auto 0 auto;
+      border: 1px #a0acb5 solid;
+      width: 240px;
+      height: auto;
+      line-height: 64px;
+      font-size: 36px;
+      text-align: center;
+      border-radius: 6px;
+      color: #a0acb5;
+    }
+    .page-load-tip>.tip {
+      width: 100%;
+      margin-top: 60px;
+      font-size: 36px;
+      color: #a0acb5;
+      text-align: center;
+    }
+    .page-file-tip {
+      width: 1125px;
+      height: 100%;
+      min-height: 1600px;
+      display: none;
+      background-color: #eeeeee;
+      position: relative;
+      z-index: 100;
+      overflow: hidden;
+    }
+    .page-file-tip>.icon {
+      display: block;
+      width: 200px;
+      height: 200px;
+      background-size: contain;
+      margin: 200px auto 0 auto;
+      background-image: url("//game.gtimg.cn/images/lol/act/a20200224tft/polo-sleep.png");
+    }
+    .page-file-tip>.tip {
+      width: 100%;
+      margin-top: 60px;
+      font-size: 36px;
+      color: #1c1c1c;
+      text-align: center;
+    }
+    .page-file-tip>.err {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 48px;
+      margin-top: 60px;
+      font-size: 28px;
+      color: red;
+    }
+  </style>
+  <div class="page-load-tip">
+    <div class="icon">
+      <div class="top"></div>
+      <div class="bottom"></div>
+      <div class="mask"></div>
+    </div>
+    <p class="tip">正在加载...</p>
+    <a href="javascript:window.location.reload()" class="btn-flash">再刷新一下</a>
+  </div>
+  <div class="page-file-tip" style="display: none;"> <i class="icon"></i>
+    <p class="tip">网络开小差啦，请点击重试</p>
+    <p class="err"></p>
+  </div>
+</div>

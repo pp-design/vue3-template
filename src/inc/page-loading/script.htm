@@ -1,0 +1,44 @@
+<script id="page-script-loader">
+  /** 页面加载处理-js */
+  (function() {
+    /** 页面加载错误记录 */
+    var loadErrorEvent = null;
+    var onErrorHandler = function(e) {
+      window.loadErrorEvent || (window.loadErrorEvent = e);
+      window.PTTSendClick && window.PTTSendClick('btn', 'errorrecord', `记录报错${e.message}_${e.filename}`);
+    };
+    window.addEventListener('error', onErrorHandler);
+
+    /**
+     * 设置一个定时,在vue.mounted清理掉(说明js文件都正常加载了),
+     * 如果30秒内,没有被清理掉同时带有报错数据,则提示用户点击重新加载
+     * */
+    var loadCheckTime = Date.now();
+    window.loadCheckTimeId = setTimeout(function() {
+      if (window.loadErrorEvent) {
+        window.PTTSendClick && window.PTTSendClick('btn', 'pagefail', `文档解析失败${window.loadErrorEvent.message}_${window.loadErrorEvent.filename}`);
+        document.querySelector('.page-file-tip').style.display = 'block';
+        document.querySelector('.page-file-tip>.err').innerHTML = window.loadErrorEvent.error.stack;
+        document.querySelector('.page-file-tip').addEventListener("click", function() {
+          window.location.reload(true);
+        });
+      }
+    }, 30 * 1000);
+
+    /** 清理白屏恢复定时,在页面渲染后执行 */
+    window.clearLoadFileCheck = function() {
+      console.log(`清理白屏恢复定时,文档解析耗时${(Date.now()-loadCheckTime)/1000}s`);
+      clearTimeout(window.loadCheckTimeId);
+      //页面解析成功了,但遭遇了错误
+      if (window.loadErrorEvent) {
+        window.PTTSendClick && window.PTTSendClick('btn', 'pageerr', `文档解析成功,但遭遇错误${window.loadErrorEvent.message}_${window.loadErrorEvent.filename}`);
+      };
+
+      //移除加载提示
+      var loading = document.querySelector('.page-file-loading');
+      var loader = document.querySelector('#page-script-loader');
+      loading && loading.remove();
+      loader && loader.remove();
+    };
+  })();
+</script>

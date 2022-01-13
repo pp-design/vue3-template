@@ -59,5 +59,11 @@ export function loadViteEnv(mode: string): ViteEnv {
     env.VITE_HOST = env.VITE_HOST.replace(HTTP_REG, 'https://');
     env.VITE_BASE_URL = env.VITE_BASE_URL.replace(/^\./gi, '');
   }
+
+  // 如果是编译下，强制开启HTTPS
+  if (mode === 'production') {
+    env.VITE_HTTPS = true;
+  }
+
   return env;
 }

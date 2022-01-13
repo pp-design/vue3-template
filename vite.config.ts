@@ -25,7 +25,7 @@ export default (configEnv: ConfigEnv): UserConfig => {
       },
     },
     server: {
-      https: true,
+      https: viteEnv.VITE_HTTPS,
       host: '0.0.0.0',
       hmr: {
         host: '0.0.0.0',

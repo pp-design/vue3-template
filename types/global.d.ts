@@ -7,6 +7,9 @@ declare interface ViteEnv {
   // 将发布的项目目录
   VITE_BASE_URL: string;
 
+  // 是否开启HTTPS
+  VITE_HTTPS: boolean;
+
   // 是否支持多页面
   VITE_USE_MPA: boolean;
 

@@ -54,7 +54,7 @@
       var pageName = urlParams.page || 'index';
 
       //跳转地址
-      var goUrl = 'https://' + location.host + location.pathname + 'pages/' + pageName + '/?ts=' + Date.now();
+      var goUrl = 'VITE_HTTPS://' + location.host + location.pathname + 'pages/' + pageName + '/?ts=' + Date.now();
       //重新拼接链接参数
       for (var key in urlParams) {
         if (key === 'page' || key === 'ts') continue;

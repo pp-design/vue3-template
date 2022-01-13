@@ -6,6 +6,7 @@
 import { Plugin } from 'vite';
 import shell from 'shelljs';
 import path from 'path';
+import pretty from 'pretty';
 
 import history from 'connect-history-api-fallback';
 
@@ -24,6 +25,12 @@ export default function createMpaPlugin(viteEnv: ViteEnv, isBuild: boolean): Plu
       userConfig.build.rollupOptions.input = getMPAInput();
       userConfig.server = userConfig.server || {};
       userConfig.server.open = userConfig.build.rollupOptions.input || getOpenPage();
+    },
+    transformIndexHtml(html) {
+      let content: string = html;
+      const protocol = viteEnv.VITE_HTTPS ? 'https' : 'http';
+      content = content.replace(/VITE_HTTPS/gi, protocol);
+      return pretty(content);
     },
     configureServer({ middlewares: app }) {
       const historyConnect: any = history({

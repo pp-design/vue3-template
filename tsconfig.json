@@ -37,12 +37,13 @@
     }
   },
   "include": [
+    "plugins/",
     "types/global.d.ts",
     "vite.config.ts",
-    "plugins/",
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/**/*.js"
   ]
 }

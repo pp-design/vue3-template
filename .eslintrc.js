@@ -1,13 +1,13 @@
 module.exports = {
   "parser": "vue-eslint-parser",
   "extends": [
-    'plugin:vue/vue3-essential',
     'eslint-config-tencent', 
     'eslint-config-tencent/ts', 
-    'plugin:vue/vue3-recommended'
+    'plugin:@typescript-eslint/recommended'
   ],
   "plugins": [
-    "vue"
+    "vue",
+    "@typescript-eslint"
   ],
   "parserOptions": {
     "extraFileExtensions": [
@@ -24,6 +24,17 @@ module.exports = {
     "parser": "@typescript-eslint/parser",
     "ecmaVersion": 12,
     "sourceType": "module"
+  },
+  "rules": {
+    'no-unused-vars': [
+      'error',
+      { "varsIgnorePattern": '.*', "args": 'none' }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "varsIgnorePattern": '.*', "args": 'none' }
+    ],
+    "@typescript-eslint/no-explicit-any": ["off"]
   },
   "ignorePatterns": [".*", "public", "*.config.*"],
   "env": {

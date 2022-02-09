@@ -1,28 +1,28 @@
 module.exports = {
-    "extends": [
-        "stylelint-config-recommended-vue", 
-        "stylelint-config-tencent",
+    'extends': [
+        'stylelint-config-recommended-vue',
+        'stylelint-config-tencent'
     ],
-    "plugins": ["stylelint-order"],
-    "rules": {
+    'plugins': ['stylelint-order'],
+    'rules': {
         'no-empty-source': null,
-        "value-no-vendor-prefix": [true, {
-            "ignoreValues": ["box"]
+        'value-no-vendor-prefix': [true, {
+            'ignoreValues': ['box']
         }],
-        "property-no-vendor-prefix": [true, {
-            "ignoreProperties": ["box-orient"]
+        'property-no-vendor-prefix': [true, {
+            'ignoreProperties': ['box-orient']
         }],
-        "font-family-no-missing-generic-family-keyword": null,
-        "order/order": [
-            "custom-properties",
-            "declarations"
+        'font-family-no-missing-generic-family-keyword': null,
+        'order/order': [
+            'custom-properties',
+            'declarations'
         ]
     },
-    "overrides": [
+    'overrides': [
         {
-            "files": ["*.vue", "**/*.vue"],
-            "rules": {
-                "unit-allowed-list": ["em", "rem", "s", "px", "%"]
+            'files': ['*.vue', '**/*.vue'],
+            'rules': {
+                'unit-allowed-list': ['em', 'rem', 's', 'px', '%']
             }
         }
     ]

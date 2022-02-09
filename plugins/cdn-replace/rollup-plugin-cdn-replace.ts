@@ -13,8 +13,6 @@ const name = 'rollup-plugin-cdn-replace';
 export function replaceCDN(viteEnv: ViteEnv) {
   const baseURL = `${viteEnv.VITE_HOST}${viteEnv.VITE_BASE_URL}ossweb-img/`;
 
-  console.log('ReplaceCDN: ', baseURL);
-
   // 检测数据是否正确
   if (!viteEnv.VITE_IED_CDN) {
     console.log('请在 .env 文件中设置 VITE_IED_BASE 地址！');

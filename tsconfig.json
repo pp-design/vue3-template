@@ -16,24 +16,12 @@
     ],
     "baseUrl": "src/",
     "paths": {
-      "*": [
-        "types/global.d.ts"
-      ],
-      "@/*": [
-        "src/*"
-      ],
-      "@src/*": [
-        "src/*"
-      ],
-      "@public/*": [
-        "src/public/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ]
+      "*": [ "types/global.d.ts" ],
+      "@/*": [ "src/*" ],
+      "@src/*": [ "src/*" ],
+      "@public/*": [ "src/public/*" ],
+      "@assets/*": [ "src/assets/*" ],
+      "@components/*": [ "src/components/*" ]
     }
   },
   "include": [

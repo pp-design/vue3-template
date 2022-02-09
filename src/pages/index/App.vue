@@ -17,7 +17,7 @@ export default defineComponent({
     index
     <img
       alt="Vue logo"
-      src="@assets/images/logo.png"
+        src="@assets/images/logo.png"
     >
     <img
       :src="src"

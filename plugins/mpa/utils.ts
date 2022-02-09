@@ -84,6 +84,11 @@ export function getHistoryReWriteRuleList(viteEnv: ViteEnv): Rewrite[] {
   let rewrites: Rewrite[] = [];
   base = viteEnv.VITE_BASE_URL.replace(/^\./, '');
 
+  let pageBase = base;
+  if (viteEnv.VITE_TEST) {
+    pageBase = `${pageBase}/${viteEnv.VITE_TEST_BASE_URL}`;
+    pageBase = pageBase.replace(/\/+/gi, '/');
+  }
   // 跟页面跳转
   rewrites.push({
     from: new RegExp(`^${base}$`),
@@ -95,7 +100,7 @@ export function getHistoryReWriteRuleList(viteEnv: ViteEnv): Rewrite[] {
     if (!pageInfo.rewrite) return;
     const to = `${base}${pageInfo.path}`;
 
-    let currRewrites: Rewrite[] = formatRewrites(`${base}/pages/`, pageInfo.name, to);
+    const currRewrites: Rewrite[] = formatRewrites(`${pageBase}/pages/`, pageInfo.name, to);
     rewrites = [...rewrites, ...currRewrites];
   });
   return rewrites;

@@ -7,6 +7,11 @@ declare interface ViteEnv {
   // 将发布的项目目录
   VITE_BASE_URL: string;
 
+  // 是否开启测试
+  VITE_TEST: boolean;
+  // 测试目录
+  VITE_TEST_BASE_URL: string;
+
   // 是否开启HTTPS
   VITE_HTTPS: boolean;
 

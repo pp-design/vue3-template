@@ -27,13 +27,10 @@ export default (configEnv: ConfigEnv): UserConfig => {
     server: {
       https: viteEnv.VITE_HTTPS,
       host: '0.0.0.0',
-      hmr: {
-        host: '0.0.0.0',
-      },
     },
     build: {
       // 禁止颜色被hex
-      target: 'chrome51',
+      cssTarget: 'chrome61',
       /** 避免资源被打包成base64 */
       assetsInlineLimit: 0,
     },

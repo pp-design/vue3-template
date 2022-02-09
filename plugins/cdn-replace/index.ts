@@ -38,7 +38,7 @@ export default function createCDNReplace(viteEnv: ViteEnv, isBuild: boolean): Pl
         // 使用插件来替换蜘蛛CDN地址
         userConfig.build.rollupOptions.output.plugins = userConfig.build.rollupOptions.output.plugins || [];
         userConfig.build.rollupOptions.output.plugins.push(replaceCDN(viteEnv));
-      };
+      }
     },
     transform(code: string) {
       const finalCode: string = pathRewrite(code, viteEnv, isBuild);

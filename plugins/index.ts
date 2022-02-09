@@ -7,6 +7,7 @@ import createHtmlInclude from './html-include';
 import createMockPlugin from './mock';
 import createSvgIconsPlugin from './svg-icons';
 import createCDNReplace from './cdn-replace';
+import createCodeTestPlugin from './code-test';
 
 /**
  * 插件合集
@@ -19,6 +20,7 @@ export function createPlugins(config: ConfigEnv, viteEnv: ViteEnv): Plugin[] {
     createVuePlugin(),
     createVueJSXPlugin(),
     createSvgIconsPlugin(),
+    createCodeTestPlugin(),
     createCDNReplace(viteEnv, isBuild),
   ];
 

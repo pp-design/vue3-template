@@ -30,6 +30,13 @@ export default function createMpaPlugin(viteEnv: ViteEnv, isBuild: boolean): Plu
       let content: string = html;
       const protocol = viteEnv.VITE_HTTPS ? 'https' : 'http';
       content = content.replace(/VITE_HTTPS/gi, protocol);
+      let pageName = 'pages/';
+      if (viteEnv.VITE_TEST) {
+        pageName = `/${viteEnv.VITE_TEST_BASE_URL}/pages/`;
+        pageName = pageName.replace(/^\/+/gi, '');
+        pageName  = pageName.replace(/\/+/gi, '/');
+      }
+      content = content.replace(/VITE_PAGE_NAME/gi, pageName);
       return pretty(content);
     },
     configureServer({ middlewares: app }) {
@@ -47,7 +54,14 @@ export default function createMpaPlugin(viteEnv: ViteEnv, isBuild: boolean): Plu
         const destPath: string = path.resolve(dest);
         const pagesPath: string = path.resolve(destPath, 'src');
 
-        shell.mv('-f', `${pagesPath}/*`, destPath);
+        let finalPath = destPath;
+        if (viteEnv.VITE_TEST && viteEnv.VITE_TEST_BASE_URL) {
+          finalPath = `${finalPath}/${viteEnv.VITE_TEST_BASE_URL}`;
+          finalPath = finalPath.replace(/\/+/gi, '/');
+          shell.mkdir(finalPath);
+        }
+
+        shell.mv('-f', `${pagesPath}/*`, finalPath);
         shell.rm('-rf', pagesPath);
       }
     },

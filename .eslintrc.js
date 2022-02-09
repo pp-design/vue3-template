@@ -1,44 +1,44 @@
 module.exports = {
-  "parser": "vue-eslint-parser",
-  "extends": [
+  'parser': 'vue-eslint-parser',
+  'extends': [
     'eslint-config-tencent', 
     'eslint-config-tencent/ts', 
     'plugin:@typescript-eslint/recommended'
   ],
-  "plugins": [
-    "vue",
-    "@typescript-eslint"
+  'plugins': [
+    'vue',
+    '@typescript-eslint'
   ],
-  "parserOptions": {
-    "extraFileExtensions": [
-      ".vue"
+  'parserOptions': {
+    'extraFileExtensions': [
+      '.vue'
     ],
-    "overrides": [
+    'overrides': [
       {
-        "files": ['*.ts', '*.tsx'],
-        "parserOptions": {
-          "project": ['./tsconfig.json'],
-        },
+        'files': ['*.ts', '*.tsx'],
+        'parserOptions': {
+          'project': ['./tsconfig.json'],
+        }
       }
     ],
-    "parser": "@typescript-eslint/parser",
-    "ecmaVersion": 12,
-    "sourceType": "module"
+    'parser': '@typescript-eslint/parser',
+    'tsconfigRootDir': __dirname,
+    'ecmaVersion': 12,
+    'sourceType': 'module'
   },
-  "rules": {
+  'rules': {
     'no-unused-vars': [
       'error',
-      { "varsIgnorePattern": '.*', "args": 'none' }
+      { 'varsIgnorePattern': '.*', 'args': 'none' }
     ],
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      { "varsIgnorePattern": '.*', "args": 'none' }
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { 'varsIgnorePattern': '.*', 'args': 'none' }
     ],
-    "@typescript-eslint/no-explicit-any": ["off"]
+    '@typescript-eslint/no-explicit-any': ['off']
   },
-  "ignorePatterns": [".*", "public", "*.config.*"],
-  "env": {
-    "browser": true,
-    "es2021": true
+  'env': {
+    'browser': true,
+    'es2021': true
   }
 }

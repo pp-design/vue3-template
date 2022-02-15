@@ -12,7 +12,7 @@ export default function createCodeTestPlugin(): Plugin {
     enforce: 'post',
     apply: 'build',
     transformIndexHtml(html: string) {
-      return test(html);
+      return test(html, true);
     },
     async transform(code: string) {
       return test(code);

@@ -1,0 +1,2 @@
+npx husky add .husky/prepare-commit-msg "exec < /dev/tty &amp;&amp; npx git-cz --hook || true"
+npx husky add .husky/prepare-commit-msg 'npx --no-install commitlint --edit "$1"'

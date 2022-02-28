@@ -61,8 +61,12 @@
     "yargs": "^17.2.1"
   },
   "lint-staged": {
-    "src/**/*.{ts,js,vue,jsx}": "npm run lint:js",
-    "src/**/*.{css,scss,less}": "npm run lint:css"
+    "src/**/*.{ts,js,vue,jsx}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{css,scss,less}": [
+      "stylelint --fix"
+    ]
   },
   "config": {
     "commitizen": {
